@@ -1,0 +1,7 @@
+name: Build and Deploy Code
+
+on: [push, pull_request]
+
+jobs:
+  firstJob:
+    runs-on: ubu

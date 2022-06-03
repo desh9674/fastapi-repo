@@ -1,0 +1,41 @@
+version: '3'
+services:
+    api:
+        build: .
+        image: nginx
+        depends_on:
+            - postgres
+        ports:
+            - 8000:8000
+            # localhost port exposed to internet: listening port(or port application running on)
+        # command: 
+        #     - alembic revision --autogenerate
+        #     - alembic upgrade head
+        volumes:
+            - ./:/usr/src/app:ro
+        #command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
+        # env_file:
+        #     - ./.env
+        environment:
+            - DATABASE_HOSTNAME=postgres
+            - DATABASE_PORT=5432
+            - DATABASE_NAME=fastapi
+            - DATABASE_USERNAME=postgres
+            - DATABASE_PASSWORD=desh1596
+            - ALGORITHM=HS256
+            - SECRET_KEY=I_FIND_YOUR_LACK_OF_FAITH_DISTURBING
+            - ACCESS_TOKEN_EXPIRE_MINUTES=300
+        
+    postgres:
+        image: postgres
+        environment:
+            - POSTGRES_PASSWORD=desh1596
+            - POSTGRES_DB=fastapi
+        #command: alembic upgrade head
+        # expose:
+        #     - 5432
+        volumes:
+            - postgres-db:/var/lib/postgresql/data
+volumes:
+    postgres-db:
+        

@@ -1,0 +1,28 @@
+--- 
+services: 
+  api: 
+    build: "."
+    depends_on: 
+      - postgres
+    environment: 
+      - DATABASE_HOSTNAME=postgres
+      - DATABASE_PORT=5432
+      - DATABASE_NAME=fastapi
+      - DATABASE_USERNAME=postgres
+      - "DATABASE_PASSWORD=desh1596 - ALGORITHM=HS256"
+      - SECRET_KEY=I_FIND_YOUR_LACK_OF_FAITH_DISTURBING
+      - ACCESS_TOKEN_EXPIRE_MINUTES=300
+    ports: 
+      - "8000:8000"
+    volumes: 
+      - "./:/usr/src/app:ro"
+  postgres: 
+    environment: 
+      - POSTGRES_PASSWORD=desh1596
+      - POSTGRES_DB=fastapi
+    image: "postgres:14.1-alpine"
+    volumes: 
+      - "postgres-db:/var/lib/postgresql/data"
+version: "3.8"
+volumes: 
+  postgres-db: ~

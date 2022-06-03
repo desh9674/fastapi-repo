@@ -1,0 +1,94 @@
+# docker commands
+docker build --help
+
+
+docker build  -t fastapi  - manually cmd build
+
+# docker-compose build -- to rebuild manually
+#docker-compose up -d  through compose file for testing
+#docker-compose up -a 
+
+#docker-compose -f docker-compose-dev.yml up -d             #for developmen env
+#docker-compose -f docker-compose-dev.yml down
+
+#docker-compose -f docker-compose-prod.yml up -d
+
+# docker ps - check docker images
+# docker exec -it fastapi-api-1 bash              # opens bash(linux cmd) of image file(check image name)
+# cat main.py  lists out contents of file
+# docker logs fastapi-api-1
+# fastapi-postgres-1
+
+#docker ps -a --- lists active images
+#docker logs fastapi-postgres-1
+#
+
+
+# docker image tag fastapi_api desh9674/fastapiv1.1
+# docker push desh9674/fastapiv1.1:"tagename_latest"
+
+#docker rmi $(docker images -f dangling=true -q) -- removes images with no tags
+#docker container ls -aq - lists all active containers
+# dcker container rm a43919b65e85,  === removes stopped containers
+
+
+# for aws ecs context instead of local
+docker context ls  
+docker context use myecscontext
+
+
+
+# AWS
+aws --version
+aws ecr-public get-login-password --region us-east-1 | docker login --username AWS --password-stdin public.ecr.aws/m8c7e9c7
+docker tag IMAGE_NAME:latest public.ecr.aws/m8c7e9c7/fastapi:latest --creates new image copy as public.ecr.aws/m8c7e9c7/fastapi:latest
+docker push public.ecr.aws/m8c7e9c7/fastapi:latest - pushes image to ECR
+
+
+# linx
+
+# create and download keypair file before trying to ssh into ec2 instance
+
+# ssh -i myssh.pem ec2-user@ec2-43-204-130-68.ap-south-1.compute.amazonaws.com
+
+# copy files from A to B while logged in B
+
+scp <source> <destination>
+scp /path/to/file username@a:/path/to/destination
+scp username@b:/path/to/file /path/to/destination
+
+
+
+
+
+
+
+
+#FASTAPIcommands
+# cd FASTAPI
+# uvicorn app.main:app --reload >>in cmd
+# pip install -r requirements.txt
+
+
+
+
+#alembic revision --autogenerate >>>>Then>>>  alembic upgrade head
+# alembic revision --help, 
+# , or +2 or +1 or downgrade etc
+
+
+
+
+
+# docker run --name aws -d -p 80:8000 public.ecr.aws/m8c7e9c7/fastapi
+# docker run --name <name of container> -d -p 80:8000 <name of image>
+
+
+git init -- to initilalize our repo
+
+# GIt commands
+
+git add --all
+git  commit -m "added more steps"
+git push origin main
+
