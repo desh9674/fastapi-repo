@@ -1,4 +1,4 @@
---- 
+version: '3'
 services: 
   api: 
     build: "."
@@ -9,7 +9,8 @@ services:
       - DATABASE_PORT=5432
       - DATABASE_NAME=fastapi
       - DATABASE_USERNAME=postgres
-      - "DATABASE_PASSWORD=desh1596 - ALGORITHM=HS256"
+      - DATABASE_PASSWORD=desh1596 
+      - ALGORITHM=HS256
       - SECRET_KEY=I_FIND_YOUR_LACK_OF_FAITH_DISTURBING
       - ACCESS_TOKEN_EXPIRE_MINUTES=300
     ports: 
@@ -23,6 +24,5 @@ services:
     image: "postgres:14.1-alpine"
     volumes: 
       - "postgres-db:/var/lib/postgresql/data"
-version: "3.8"
 volumes: 
   postgres-db: ~

@@ -91,4 +91,4 @@ git init -- to initilalize our repo
 git add --all
 git  commit -m "added more steps"
 git push origin main
-
+scp -r -i myssh.pem C:\Users\1735742.INDIA\Documents\Env\Env2\FASTAPI ec2-user@43.204.130.68

@@ -2,7 +2,6 @@ version: '3'
 services:
     api:
         build: .
-        image: nginx
         depends_on:
             - postgres
         ports:
