@@ -1,6 +1,6 @@
 # docker commands
 docker build --help
-
+pip3 freeze > requirements.txt
 
 docker build  -t fastapi  - manually cmd build
 

@@ -1,7 +1,7 @@
 version: '3'
 services:
     api:
-        build: .
+        image: public.ecr.aws/m8c7e9c7/fastapi
         depends_on:
             - postgres
         ports:
@@ -11,7 +11,7 @@ services:
         #     - alembic revision --autogenerate
         #     - alembic upgrade head
         volumes:
-            - ./:/usr/src/app:ro
+            - ./:/usr/src/app:ro  # this is very importang for production this syncs with prod
         #command: uvicorn app.main:app --host 0.0.0.0 --port 8000 --reload
         # env_file:
         #     - ./.env
